@@ -18,6 +18,11 @@ POSITION THYSELF
 executed the 'run' file in the 'challenge' directory then passed that to cd to navigate to where it is
 pwn.college{wkS8wLTzRMwww05tPetXyG8CKCv.dZDN1QDLykzN0czW}
 
+POSITION ELSEWHERE
+pwn.college{86JPp8en7WTJ2dNo-zBiXoMu2yA.ddDN1QDLykzN0czW}
+changing directory and running challenge
+
+
 
 
 
