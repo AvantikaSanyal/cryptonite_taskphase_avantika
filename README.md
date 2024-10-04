@@ -20,7 +20,23 @@ pwn.college{wkS8wLTzRMwww05tPetXyG8CKCv.dZDN1QDLykzN0czW}
 
 POSITION ELSEWHERE
 pwn.college{86JPp8en7WTJ2dNo-zBiXoMu2yA.ddDN1QDLykzN0czW}
-changing directory and running challenge
+user is navigating from home directory(~) to /some/new/directory. cd command is updating the address. we're executing a program in a specific directory. so we're using cd to navigate to the directory and executing the program from that directory
+
+
+POSITION YET ELSEWHERE
+pwn.college{MCkBP7klkBqu5wOzHC5byk4nEos.dhDN1QDLykzN0czW}
+user is navigating to yet another directory using cd and running the file from there
+so ~ is for home directory. we're navigating to /usr/share/zoneinfo/posix/Asia using cd.
+thus the command looks like cd /usr/share/zoneinfo/posix/Asia. and then we're running the challenege from there using /challenge/run
+
+IMPLICIT RELATIVE PATHS
+pwn.college{sG-cjaxI-cMU09UgJ9VyV1XEogI.dlDN1QDLykzN0czW}
+user is navigating using cd to '/' which is the root directory. then we run the challenge using challenge/run ,which is a relative path - relative to the root directory.
+
+
+
+
+
 
 
 
