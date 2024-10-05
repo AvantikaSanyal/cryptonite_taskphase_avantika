@@ -55,6 +55,15 @@ then we're giving the ~/a which is basically /home/hacker/a (which is basically 
 so it looks like "./challenge/run ~/a"
 
 
+CAT THE COMMAND NOT THE PET
+pwn.college{UlnsfzsJpOr-Q8x2pbjbmF9EDSL.dFzN1QDLykzN0czW}
+so basically i used "cat" to read the "flag" file where my flag was stored
+
+CATTING ABSOLUTE PATHS
+pwn.college{kybDDZwE-IDjTp3rTazUOayldVQ.dlTM5QDLykzN0czW}
+here we used the "cat" to read the flag in the absloute path "/flag"
+"cat /flag"
+
 
 
 
