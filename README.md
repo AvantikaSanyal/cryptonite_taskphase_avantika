@@ -64,6 +64,11 @@ pwn.college{kybDDZwE-IDjTp3rTazUOayldVQ.dlTM5QDLykzN0czW}
 here we used the "cat" to read the flag in the absloute path "/flag"
 "cat /flag"
 
+MORE CATTING PRACTICE
+pwn.college{0vZK6loDjZv1NOrbMF3ujg0jZBF.dBjM5QDLykzN0czW}
+i used "cat" to ouput the contents at the address of /usr/share/enchant-2/flag
+
+
 
 
 
