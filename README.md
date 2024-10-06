@@ -64,6 +64,7 @@ pwn.college{kybDDZwE-IDjTp3rTazUOayldVQ.dlTM5QDLykzN0czW}
 here we used the "cat" to read the flag in the absloute path "/flag"
 "cat /flag"
 
+
 MORE CATTING PRACTICE
 pwn.college{0vZK6loDjZv1NOrbMF3ujg0jZBF.dBjM5QDLykzN0czW}
 i used "cat" to ouput the contents at the address of /usr/share/enchant-2/flag
@@ -132,6 +133,20 @@ LEARNING COMPLEX USAGE
 pwn.college{ICGT38tTkNxqMfQXy3ZnrwWW57C.dVjM5QDLykzN0czW}
 here basically what i used was "/challenge/challenge --printfile /flag"
 passed printfile onto /challenge/challenge and then passed /flag onto printfile
+
+MANUAL READING 
+"
+       --nnwfwa NUM
+              print the flag if NUM is 840"
+pwn.college{AnnwJfwaNwzk8mhz-nKKjgNtguN.dRTM4QDLykzN0czW}
+we did "man challenge" to read the manual
+and then we did "/challenge/challenge --nnwfwa 840"
+
+SEARCGING MANUALS
+pwn.college{Irlmo_XKQ56PekZI9W-3qntseyx.dVTM4QDLykzN0czW}
+used man challenge
+used /flag
+then i did /challenge/challenge -n (according to the manual the -n was where the flag was found)
 
 
 
