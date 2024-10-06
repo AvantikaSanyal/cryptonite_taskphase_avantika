@@ -116,6 +116,25 @@ AN EPIC FILESYSTEM QUEST
 pwn.college{k7lKiqQnycEEyGx9I3BHIw15Yeb.dljM4QDLykzN0czW}
 i cd or ls or cat into files as needed (there were like 500 steps i genuinely cant list them)
 
+LINKING FILES
+pwn.college{k6N77bfltXrwF24Jowntcdm5LZT.dlTM1UDLykzN0czW}
+
+"hacker@commands~linking-files:~$ rm /home/hacker/not-the-flag
+hacker@commands~linking-files:~$ ln -s /flag /home/hacker/not-the-flag"
+
+removed the not-the-flag then create a not-the-flag that we're soft linking to the flag. then we run challenge/catflag which is linked to not-the-flag thus it runs flag
+
+LEARNING FROM DOCUMENTATION
+pwn.college{Un0SK5P3P4WmWp6YydNE79dzGKn.dRjM5QDLykzN0czW}
+simply  invoked the program "/challenge/challenge" and then passed the argument "--giveflag"
+
+LEARNING COMPLEX USAGE
+pwn.college{ICGT38tTkNxqMfQXy3ZnrwWW57C.dVjM5QDLykzN0czW}
+here basically what i used was "/challenge/challenge --printfile /flag"
+passed printfile onto /challenge/challenge and then passed /flag onto printfile
+
+
+
 
 
 
