@@ -106,6 +106,7 @@ then we make a dictiornary in tmp using "mkdir pwn"
 then simply "touch college" to make the file
 and then run challenge
 
+
 FINDING FILES
 pwn.college{sabJdKMw6bZNLBOlnUZQAex4LVU.dJzM4QDLykzN0czW}
 we first did " find / -name flag" and got a list of every place flag is
