@@ -112,6 +112,14 @@ ignoring the ones where we were denied permission
 i did cat for every other location
 
 
+AN EPIC FILESYSTEM QUEST
+pwn.college{k7lKiqQnycEEyGx9I3BHIw15Yeb.dljM4QDLykzN0czW}
+i cd or ls or cat into files as needed (there were like 500 steps i genuinely cant list them)
+
+
+
+
+
 
 
 
