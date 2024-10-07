@@ -241,7 +241,41 @@ pwn.college{UmPdTLjQxIPikXo9CR2Qt7a3YFD.dZjM4QDLykzN0czW}
 " /challenge/files$ /challenge/run [!pwn]* "
 same thing as the last one except i wanted to NOT include the p,w,n ones so i simply did "!"
 
+REDIRECTING OUTPUT
+pwn.college{AiYUmZTWfsfhLPKBbpHKBpICrRB.dRjN1QDLykzN0czW}
+very simple, just did echo PWN > COLLEGE because i wanted the word PWN to be redirected to COLLEGE
 
+REDIRECTING MORE OUTPUT
+pwn.college{oxk3HOCKqz0q8DI-W5TG_T58-Gn.dVjN1QDLykzN0czW}
+  hacker@piping~redirecting-more-output:~$ /challenge/run >myflag
+
+   redirecting the output of "/challenge/run" to "myflag"
+   this is what it showed :
+   
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge will check that output is redirected to a specific file path : myflag
+[INFO] - the challenge will output a reward file if all the tests pass : /flag
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /flag file.
+
+[TEST] You should have redirected my stdout to a file called myflag. Checking...
+
+[PASS] The file at the other end of my stdout looks okay!
+[PASS] Success! You have satisfied all execution requirements.
+
+because it showed that i have successfully transferred the flag to "myflag" i just read that file and got my flag 
+
+hacker@piping~redirecting-more-output:~$ cat myflag
+
+APPENDING OUTPUT
+pwn.college{okmK312txvWRBHZiJfsm0Bcs8ec.ddDM5QDLykzN0czW}
+ so they said first half in /challenge/run and second half of the flag in stdout
+ redirected both to /home/hacker/the-flag like the question asked me to
+ read the file using cat /home/hacker/the-flag
+ 
 
 
 
