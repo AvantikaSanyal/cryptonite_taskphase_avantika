@@ -195,8 +195,29 @@ this displayed:
 
 so i directly did challenge --secret 8L6FMlNu
 
+MATCHING WITH *
+pwn.college{M4JBpmN-H3WXDmCZViylpM0sKZ7.dFjM4QDLykzN0czW}
+     hacker@globbing~matching-with-:~$ cd /ch*
+     hacker@globbing~matching-with-:/challenge$ /challenge/run
+i was asked to cd into challenge but using * and keeping it shorter than four characters so i went with "/ch*"
+so then i had entered the /challenge directory after which i simply ran "/challenge/run"
 
-  
+MATCHING WITH ?
+pwn.college{shzz1wgLYHZHi7NPXuxbEXOOVP4.dJjM4QDLykzN0czW}
+       hacker@globbing~matching-with-:~$ cd /?ha??enge
+       hacker@globbing~matching-with-:/challenge$ /challenge/
+
+This was similar to the previous one where except for "/ch*" i simply did "/?ha??enge" like they asked me to
+
+MATCHING WITH []
+pwn.college{wHhi9Ew75rhqGQo5PkKrV9QJlu2.dNjM4QDLykzN0czW}
+   cd/challenge/files
+   /challenge/run file_[bash}
+
+this was pretty straight forward, i changed my directory as asked and then i searched for file_a,file_b,file_s,file_h with file_[bash]
+
+
+
 
 
 
