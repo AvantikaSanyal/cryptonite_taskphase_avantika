@@ -276,6 +276,47 @@ pwn.college{okmK312txvWRBHZiJfsm0Bcs8ec.ddDM5QDLykzN0czW}
  redirected both to /home/hacker/the-flag like the question asked me to
  read the file using cat /home/hacker/the-flag
  
+REDIRECTING ERRORS
+pwn.college{ARkhWMeAqU7EfNRdK671E0cf8RH.ddjN1QDLykzN0czW}
+/challenge/run > myflag 2 > instructions
+cat myflag
+
+i redirected the output of /challenge/run to myflag from where i redirected its error to instructions
+then i read myflag
+
+REDIRECTING INPUT
+pwn.college{0L1pafFs7gQU6NZkQh-6hM0nh7U.dBzN1QDLykzN0czW}
+
+here basically we needed to pass the value "COLLEGE" to the PWN file and then revert the PWN value too /challenge/run
+hacker@piping~redirecting-input:~$ echo COLLEGE > PWN
+hacker@piping~redirecting-input:~$ /challenge/run < PWN
+
+
+GREPPING STORED RESULTS
+pwn.college{8iMCCNcfH46ZIwJ-1ApbKb4E3_J.dhTM4QDLykzN0czW}
+/challenge/run > /tmp/data.txt
+i redirected the output of /challenge/run to /tmp/data.txt as the question asked me to
+then i kept doing grep "flag" /tmp/data.txt
+but like i kept getting "flag" worda so like i was like why not do grep "pwn.college" /tmp/data.txt and it worked
+
+GREPPING LIVE OUTPUT
+this was relatively simple considering the prev one
+/challenge/run | grep pwn.college
+
+GREPPING ERRORS
+pwn.college{ARkhWMeAqU7EfNRdK671E0cf8RH.ddjN1QDLykzN0czW}
+2>&1grep pwn.college
+as the question said i redirected the standard error  to the standard output then piped it. then i grepped for pwn.college since our flag starts with that
+it didnt give any ouputs so i was like "ls" to see what files are there
+i got :
+hacker@piping~grepping-errors:~$ ls
+COLLEGE  Desktop  PWN  a  instructions  myflag  not-the-flag  stdout  stdoyut  the-flag
+
+then i saw the flag might be under myflag
+cat myflag
+
+this gave me my flag
+
 
 
 
