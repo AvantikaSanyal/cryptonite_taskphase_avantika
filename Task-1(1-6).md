@@ -143,13 +143,13 @@ pwn.college{AnnwJfwaNwzk8mhz-nKKjgNtguN.dRTM4QDLykzN0czW}
 we did "man challenge" to read the manual
 and then we did "/challenge/challenge --nnwfwa 840"
 
-#SEARCHING MANUALS
+# SEARCHING MANUALS
 pwn.college{Irlmo_XKQ56PekZI9W-3qntseyx.dVTM4QDLykzN0czW}
 used man challenge
 used /flag
 then i did /challenge/challenge -n (according to the manual the -n was where the flag was found)
 
-#HELPFUL PROGRAMS
+# SEARCHING FOR MANUALS
 pwn.college{oUeKH2j2KE5zmOsu8DTGFZgO8n1.dZTM4QDLykzN0czW}
 i used "man man" to read the manual
 then i was like i need to search for the flag "/flag"
@@ -179,7 +179,7 @@ this displayed:
   It gave me the secret value to be : 574
   "hacker@man~helpful-programs:~$ /challenge/challenge -g 574"
 
-  HELP FOR BUILTINS
+ #  HELP FOR BUILTINS
   pwn.college{8L6FMlNuDJwMgutgjgfTpHr2pyZ.dRTM5QDLykzN0czW}
   i did "challenge help"
   this gave me: challenge: challenge [--fortune] [--version] [--secret SECRET]
