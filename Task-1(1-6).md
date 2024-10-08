@@ -315,7 +315,7 @@ COLLEGE  Desktop  PWN  a  instructions  myflag  not-the-flag  stdout  stdoyut  t
 then i saw the flag might be under myflag
 cat myflag
 
-this gave me my flag but its not the flag for this challenge
+this gave me a flag but its not the flag for this challenge
 so i did cat the-flag
 this didnt give me the correct flag either
 
