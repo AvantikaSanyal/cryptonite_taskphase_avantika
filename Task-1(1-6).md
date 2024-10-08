@@ -361,10 +361,28 @@ Solving the Challenge:
 You provided the correct secret code (MPF3bojF) using the --secret flag.
 This satisfied /challenge/college and resulted in a success message with your flag.
 
+# WRITING TO MULTIPLE PROGRAMS
+pwn.college{YJE1T_EjGCAveHYCatVOS5XPN9-.dBDO0UDLykzN0czW}
+The command >( /challenge/the ) creates a temporary named pipe and connects it to the standard input of /challenge/the. This allows you to treat the output of /challenge/the as if it were a file.
+The command tee reads the output of /challenge/hack and writes it to its standard output (which is the terminal) and to the temporary named pipe created in the previous step.
+The output of tee is then piped to /challenge/planet. This means that the output of /challenge/hack is now being sent to both /challenge/the and /challenge/planet simultaneously.
+Both /challenge/the and /challenge/planet will receive the output of /challenge/hack as their input and can process it accordingly.
 
 
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack |tee >(/challenge/the) | /challenge/planet
 
 
+# SPLIT PIPING STDERR AND STDOUT
+ /challenge/hack 2> >( /challenge/the ) | /challenge/planet
+Process Substitution:
+
+>( /challenge/the ) creates a temporary named pipe and connects it to the standard input of /challenge/the.
+Redirection:
+
+2> redirects the standard error (stderr) of /challenge/hack to the temporary named pipe created in step 1.
+Piping:
+
+The standard output (stdout) of /challenge/hack is piped to /challenge/planet using the | operator.
 
 
 
