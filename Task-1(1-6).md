@@ -319,6 +319,48 @@ this gave me a flag but its not the flag for this challenge
 so i did cat the-flag
 this didnt give me the correct flag either
 
+GOT IT FINALLY OMG
+pwn.college{U61TjfD-Y9Mka4ETDhB19zyKJ75.dVDM5QDLykzN0czW}
+i wasnt piping it thats the issue
+   hacker@piping~grepping-errors:~$ 2>&1grep pwn.college
+   hacker@piping~grepping-errors:~$ /challenge/run 2>& 1 | grep pwn
+
+DUPLICATED PIPED DATA WITH TEE
+pwn.college{MPF3bojFD5TSebIvZdxcyQNBgqL.dFjM5QDLykzN0czW}
+this one took me so long
+     hacker@piping~duplicating-piped-data-with-tee:~$  /challenge/pwn | tee pwn_output | /challenge/college
+Processing...
+   WARNING: you are overwriting file pwn_output with tee's output...
+   The input to 'college' does not contain the correct secret code! This code
+   should be provided by the 'pwn' command. HINT: use 'tee' to intercept the
+   output of 'pwn' and figure out what the code needs to be.
+   hacker@piping~duplicating-piped-data-with-tee:~$ cat pwn_output
+   Usage: /challenge/pwn --secret [SECRET_ARG]
+
+     SECRET_ARG should be "MPF3bojF"
+
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret MPF3bojF | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{MPF3bojFD5TSebIvZdxcyQNBgqL.dFjM5QDLykzN0czW}
+
+Initial Attempt:
+
+You piped the output of /challenge/pwn to /challenge/college via tee pwn_output.
+tee created pwn_output and wrote the output to both the file and /challenge/college.
+Error Message:
+
+/challenge/college complained about missing a secret code, hinting at using tee to intercept the output.
+Intercepting Output:
+
+You used cat pwn_output to reveal the program's usage information:
+/challenge/pwn requires a --secret flag followed by a specific secret code ("MPF3bojF").
+Solving the Challenge:
+
+You provided the correct secret code (MPF3bojF) using the --secret flag.
+This satisfied /challenge/college and resulted in a success message with your flag.
+
 
 
 
