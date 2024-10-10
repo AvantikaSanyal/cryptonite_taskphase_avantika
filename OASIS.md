@@ -31,3 +31,5 @@ Reverse google searched the picture of the image, theen the person who created t
 Here my friend downloaded the pic, then opened it on MS Paint and erased the distortions and scanned it.
 
 # MICROSOFT STRONG EDGE
+The answer was in the first slide. In tthe corner there was a point sized image. My friend decoded it using rot13 online
+
