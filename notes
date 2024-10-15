@@ -1,0 +1,35 @@
+1. Explicit relative path - when we need to explicitly specify the current workimg directory - starts with a " . "
+2. Implicit relative path - when the base directory is clear and we dont need to move around
+3. touch - to create new files
+4. ls - list the contents of a directory
+5. ~ is the same as /home/hacker
+6. cat - to read 
+7. grep - to read between many lines
+8. rm - to remove a file
+9. ls -a - to display hidden files in any directory
+10. mkdir - to make a directory
+11. find / -name __ - to find a file of the entered name
+12. ln -s - The ln -s command in Bash is used to create symbolic links (also known as soft links). A symbolic link is a special type of
+        file that points to another file or directory. When you access the symbolic link,
+        it redirects you to the actual target file or directory.
+13. man - to re4ad the manual
+14. --h - provide help or info
+15. Globbing - Globbing is a pattern-matching mechanism used in various operating systems and command-line interfaces. It allows 
+               you to specify a pattern that can match multiple files or directories, making it easier to work with groups of files.
+
+             Common Globbing Patterns:
+
+             Wildcard Characters:
+            *: Matches any number of characters, including zero.
+            ?: Matches exactly one character.
+            []: Matches any single character within the specified set.
+            [!...]: Matches any single character not within the specified set.
+
+ 16. > -  used to redirect the output
+ 17. 0 - stdin
+     1 - stdout
+     2 - stderr
+ 18. | - The pipe symbol (|) in Bash is used to connect the output of one command to the input of another. 
+ 19. tee - The tee command in Bash is used to write the output of a command to both the standard output 
+          (usually the terminal) and a file simultaneously
+ 20. 
