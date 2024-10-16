@@ -69,4 +69,15 @@ pwn.college{AV0d9Ygn_eY8_lVO5ruPq0HLPRd.dNzNyUDLykzN0czW}
 
 So first i changed the access to all users (including us, the hacker) using chmod o+r. Now that i have acces the /flag, i can use cat /flag to read the file.
 
+## EXECUTABLE FILES
+
+pwn.college{ksoTljiF7qY72HwRNVUroMv9Z69.dJTM2QDLykzN0czW}
+
+So here i needed execution access to /challenge/run. I took a little help from chatgpt here 
+
+> chmod u+x /challenge/run
+> ls -l /challenge/run
+> /challenge/run
+
+I obtained user access, listed the props of the challenge, ran it
 
