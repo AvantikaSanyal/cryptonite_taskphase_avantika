@@ -32,4 +32,9 @@
  18. | - The pipe symbol (|) in Bash is used to connect the output of one command to the input of another. 
  19. tee - The tee command in Bash is used to write the output of a command to both the standard output 
           (usually the terminal) and a file simultaneously
- 20. 
+ 20. Key Differences:
+su: You fully switch to the root user (you have root's full power) and need the root password.
+sudo: You stay as yourself but temporarily "borrow" root’s power to run just one command. You don’t need the root password—just your own, if you're allowed to use sudo.
+Why people prefer sudo:
+Security: You don't have to share the root password.
+Control: Admins can control which users can run which commands using sudo (via /etc/sudoers).
