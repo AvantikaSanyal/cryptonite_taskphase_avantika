@@ -6,8 +6,8 @@ Here I first changed the ownership of the flag file from the root to the user. T
 Then in accordance to the example i did ls -l, which gave a huge list of options. I went thru the list and i tried to run each file and 
 eventually got the flag.
 
-" hacker@permissions~changing-file-ownership:~$ chown hacker /flag
-hacker@permissions~changing-file-ownership:~$ /flag
+> hacker@permissions~changing-file-ownership:~$ chown hacker /flag
+> hacker@permissions~changing-file-ownership:~$ /flag
 ssh-entrypoint: /flag: Permission denied
 hacker@permissions~changing-file-ownership:~$ chown hacker /flag
 hacker@permissions~changing-file-ownership:~$ ls -l
