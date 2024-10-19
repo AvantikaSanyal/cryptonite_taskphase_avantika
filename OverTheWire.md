@@ -237,4 +237,45 @@ Then I exit the server, append the new password onto my local text file, enter t
 C:\Users\avant>"Level 7 password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj" >> ~/bandit_notes.txt
 C:\Users\avant>ssh bandit7@bandit.labs.overthewire.org -p 2220
 ```
+-------------------------------------------------------------------------------
+# A little that I found about the FIND command
+The find Command
+The find command searches for files and directories in a directory hierarchy based on various criteria.
+
+Basic Syntax
+```
+find [path] [options] [expression]
+
+```
+## Components of the Command
+### Path:
+
+This is where you want to start your search. Using / searches the entire filesystem, while . searches the current directory.
+### Options:
+
+These modify how find operates. Some common options include:
+-name: Matches files by name (e.g., -name "*.txt" for all text files).
+-type: Specifies the type of file (e.g., -type f for regular files, -type d for directories).
+-size: Finds files by size. You can specify:
+c for bytes (e.g., -size 33c for exactly 33 bytes).
+k for kilobytes (e.g., -size 1k for files of 1 kilobyte or more).
+M for megabytes (e.g., -size 5M for files of 5 megabytes or more).
+You can also use + or - to find files larger or smaller than a certain size (e.g., -size +10k for files larger than 10 kilobytes).
+### Expression:
+
+This specifies the conditions that files must meet. You can combine multiple expressions using logical operators:
+-and: Both conditions must be true (default if you just list conditions).
+-or: At least one of the conditions must be true.
+-not: Negates a condition.
+
+Example of Your Command
+Here’s your specific command again with a breakdown:
+```
+find / -user bandit7 -group bandit6 -size 33c
+```
+/: Start searching from the root directory.
+-user bandit7: Find files owned by the user bandit7.
+-group bandit6: Find files owned by the group bandit6.
+-size 33c: Find files that are exactly 33 bytes in size.
+-----------------------------------------------------------------------------------------------------------------------------------
 
