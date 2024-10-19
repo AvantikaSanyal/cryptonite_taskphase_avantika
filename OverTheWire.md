@@ -4,7 +4,7 @@ I needed to login to the game like we used to do for pwn college. I used the com
 ```
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
-and then i entered 'yes' as I asked, after which it asked me the pw which is bandit0
+and then i entered 'yes' as it asked, after which it asked me the pw which is "bandit0"
 
 ## LEVEL 0 TO LEVEL 1
 This one I used ChatGPT's help.
