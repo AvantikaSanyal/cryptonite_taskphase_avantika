@@ -66,6 +66,7 @@ ldr	w0, [sp, 28]
 3370-input=0
 ```
 So the value being returned to me is 3370  
+
 6. Now we convert 3370 to hexadecimal
    which is 0d2a  
    
