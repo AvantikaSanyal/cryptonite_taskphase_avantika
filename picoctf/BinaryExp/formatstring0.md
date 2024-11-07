@@ -178,4 +178,5 @@ picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_dc0f36c4}
   2. https://owasp.org/www-community/attacks/Format_string_attack
 
 ## Errors Made
-Honestly, the options that I had to enter I just did hit and trial there. I entered a variety of combinations before I got the right one.
+Honestly, the options that I had to enter I just did hit and trial there. I entered a variety of combinations before I got the right one   
+I should have realised I just need the option with % sign in it to cause a format string vulnerability.
