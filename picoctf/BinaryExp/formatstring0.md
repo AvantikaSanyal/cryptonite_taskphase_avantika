@@ -4,8 +4,9 @@ flag : picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_dc0f36c4}
 ## My Approach
 Relatively simple.
 - I launched instance and copied the link "nc mimas.picoctf.net 60075" onto my terminal and pressed enter
-- Then I was asked to input one of the three given choices, honestly went ahead and tried a cariety of combinations
+- Then I was asked to input one of the three given choices, honestly went ahead and tried a variety of combinations
 - got the flag
+  
 This was the code I got :
 ```
 #include <stdio.h>
@@ -128,12 +129,11 @@ from this section of the code I kind of realise that I need some segmentation fa
 Took the hint given which said that this challenge is about format string vulnerabilities.     
 So I asked chatgpt to point out where in the code are we focussing on format specifiers and that causing an error.
 
-n this code, the section involving format specifiers is particularly present in the printf statements that print the user’s
-burger choice. Specifically, this line in serve_patrick:     
+In this code, the section involving format specifiers is:
 ```
 int count = printf(choice1);
 ```
-and this line in serve_bob:       
+and    
 ```
 printf(choice2);
 ```
@@ -160,14 +160,17 @@ picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_dc0f36c4}
 
 ## What did I learn?
 1. What are format specifiers?
+   
            Format specifiers are placeholders in C used within functions like printf and scanf to control the type and format of
            data being output or input. They start with a percent sign (%) followed by a character that specifies the type
            of data. Format specifiers allow you to format integers, floating-point numbers, strings, characters, and more in specific ways.
-2. What is a format string vulnerability?
+3. What is a format string vulnerability?
+   
            Format string vulnerabilities typically arise when user input is passed directly into a function without specifying a format.
            A format string vulnerability occurs when a program uses weird user input as the format string in functions like printf,
            scanf.
-           When these functions take user input as the format string directly, they may interpret any % symbols in the input as format specifiers
+           When these functions take user input as the format string directly, they may interpret any % symbols in the input as format 
+           specifiers
 
 
   ## Refernces
@@ -175,4 +178,4 @@ picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_dc0f36c4}
   2. https://owasp.org/www-community/attacks/Format_string_attack
 
 ## Errors Made
-Honestly, the options that I had to enter I jusy did hit and trial there. I entered a variety of combinations before I got the right one.
+Honestly, the options that I had to enter I just did hit and trial there. I entered a variety of combinations before I got the right one.
