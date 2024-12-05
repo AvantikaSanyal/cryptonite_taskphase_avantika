@@ -10,7 +10,7 @@ as to what I should do. But, I will describe every step in intricate detail to p
 2. A quick google tells me that apps like WireShark are used for these type of files.
    
 3. I also used the following commands just to poke around my file a little :
-   ![image](https://github.com/user-attachments/assets/bad21463-5df9-40c8-b14c-e55122a75174)
+   ![image](https://github.com/user-attachments/assets/bad21463-5df9-40c8-b14c-e55122a75174)       
    I do not think this step was needed but the repo I was referring to had it, so I went ahead.         
    *note : If your file is located at          
     C:\Users\avant\Downloads\tftp (1).pcapng
@@ -24,15 +24,16 @@ as to what I should do. But, I will describe every step in intricate detail to p
    
 
 4. Install WireShark for Windows.
+   
 5. Then I uploaded the pcapng file unto wireshark and got this :   
 
 ![image](https://github.com/user-attachments/assets/4ccd510a-5a39-45aa-aaaa-cde8222235e6)     
 
 6. Then in the filter bar, I entered *tftp.type* and I get :      
  
-![image](https://github.com/user-attachments/assets/4324cf12-cf62-4d52-bbdb-65b7c9da1fd3)       
+![image](https://github.com/user-attachments/assets/4324cf12-cf62-4d52-bbdb-65b7c9da1fd3)                 
 
-*note : The tftp.type filter in Wireshark is used to filter packets based on the specific TFTP (Trivial File Transfer Protocol) operation types.*         
+*note : The tftp.type filter in Wireshark is used to filter packets based on the specific TFTP (Trivial File Transfer Protocol) operation types.*                
 I am assuming these two steps were to understand what is in our pcapng file.
 
 7. Then I opened the pcapng file and saw two specific files called *instructions* and *plan*. They looked clearly encrypted. So I Rot13 both :
@@ -43,38 +44,39 @@ instructions file :
 plan file :           
 ![image](https://github.com/user-attachments/assets/b6114f60-cbe5-4479-9344-24697a78f20d)
 
-8. Spacing out both the decrypted messages I get :
-       *TFTP DOESNT ENCRYPT OUR TRAFFIC SO WE MUST DISGUISE OUR FLAG TRANSFER. FIGURE OUT A WAY TO HIDE THE FLAG AND I WILL CHECK BACK FOR THE PLAN*
-     It mentions "plan", our plan file says
-       *I USED THE PROGRAM AND HID IT WITH-DUE DILIGENCE. CHECKOUT THE PHOTOS*
+8. Spacing out both the decrypted messages I get :       
+       *TFTP DOESNT ENCRYPT OUR TRAFFIC SO WE MUST DISGUISE OUR FLAG TRANSFER. FIGURE OUT A WAY TO HIDE THE FLAG AND I WILL CHECK BACK FOR THE PLAN*       
+     It mentions "plan", our plan file says         
+       *I USED THE PROGRAM AND HID IT WITH-DUE DILIGENCE. CHECKOUT THE PHOTOS*         
 
-9. Now I opened the pcapng file and got the following images.
+9. Now I opened the pcapng file and got the following images.            
  ![image](https://github.com/user-attachments/assets/599ec9f4-abbb-467b-8a0b-94e71e5708d5)
  ![image](https://github.com/user-attachments/assets/985eb94e-8767-4fb7-a504-41e192d0ecd6)
- ![image](https://github.com/user-attachments/assets/c801b7a7-fe5a-47fe-909b-246ee645669d)
+ ![image](https://github.com/user-attachments/assets/c801b7a7-fe5a-47fe-909b-246ee645669d)       
 
-10. Now, these are just screenshots of images. I noted that they had a .bmp extension.
+10. Now, these are just screenshots of images. I noted that they had a .bmp extension.            
     *The .bmp file extension stands for Bitmap Image File, a widely used raster graphics file format that stores bitmap digital images. The format is
-    known for its simplicity and compatibility with almost all image viewers and editors.
-    One of the Key Characteristics of .bmp Files is that :
+    known for its simplicity and compatibility with almost all image viewers and editors.*
+    
+   *One of the Key Characteristics of .bmp Files is that :            
 BMP files are usually uncompressed, meaning they store every pixel of an image. This leads to larger file sizes compared to formats like JPEG or PNG.*
-*Because of this uncompressed format, they are used in Uses of .bmp Files
+*Because of this uncompressed format, they are used in Uses of .bmp Files         
 Steganography: Due to the uncompressed nature of BMP files, they are often used in steganography tools like Steghide for hiding secret data.*
 
-11. So now I download steghide.
+12. So now I download steghide.                 
         *Steghide is a command-line tool used for steganography, the practice of hiding information within other non-secret files, such as images or audio files. It is often used to embed secret messages or files into ordinary media files without changing their visual or auditory quality significantly.*
 
-12. After that, I update my Linux package using :
+13. After that, I update my Linux package using :
 ```
 sudo apt update
 ```
 
-13. Then I install steghide
+13. Then I install steghide           
     ```
     sudo apt install steghide
     ```
 
-14. After installation, I use the steghide extract command
+14. After installation, I use the steghide extract command           
     ```
     steghide extract -sf <carrier_file>
     ```
@@ -229,7 +231,24 @@ sudo apt update
      avantikasanyal@LAPTOP-CFRE3HMA:~$ cat flag.txt
      picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}
      avantikasanyal@LAPTOP-CFRE3HMA:~$
+   ```
 ```
+## What did I learn :
+
+1. What is wireshark and how to use it?
+2. What is Steganography?
+3. How to use Steghide for steganography1/
+4. How to update Linux Packages
+
+## References :
+1. ChatGPT
+2. https://rot13.com/
+3. https://sourceforge.net/projects/steghide/
+4. https://www.wireshark.org/
+
+## Errors I made :
+1. I was calling the pcapng wrong. I needed to use /mnt/c ahead of it
+2. I downloaded steghide but tried to use it without updating my Linux Package.
 
 
 
