@@ -176,13 +176,13 @@ b = 26
 decoded_message = decode(ciphered_message, a, b)
 print("Decoded message:", decoded_message)
 ```
+now we have to use the contents of enc_flag as the input for the decryption code
+
 
 ## What I learnt?
 XOR encryption
 
 
-now we have to use the contents of enc_flag as the input for the decryption code
-```
 
 
 
