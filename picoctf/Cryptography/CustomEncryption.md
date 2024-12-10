@@ -1,6 +1,6 @@
 # Custom Encryption
 
-flag :  picoCTF{custom_d2cr0pt6d_019c831c}
+flag : picoCTF{custom_d2cr0pt6d_019c831c}
 
 ## My Approach : 
 
@@ -170,13 +170,32 @@ def decode(cipher, a, b, g=31, p=97, text_key="trudeau"):
     plaintext = dynamic_xor_decrypt(semi_cipher, text_key)
     return plaintext
 
-ciphered_message = [ list of the ciphertext ] 
+ciphered_message = [97965, 185045, 740180, 946995, 1012305, 21770, 827260, 751065, 718410, 457170, 0, 903455, 228585, 54425, 740180, 0, 239470, 936110, 10885, 674870, 261240, 293895, 65310, 65310, 185045, 65310, 283010, 555135, 348320, 533365, 283010, 76195, 130620, 185045] 
 a = 88
 b = 26
 decoded_message = decode(ciphered_message, a, b)
 print("Decoded message:", decoded_message)
 ```
 now we have to use the contents of enc_flag as the input for the decryption code
+```
+avantikasanyal@LAPTOP-CFRE3HMA:~$ mv /mnt/c/Users/avant/Downloads/kms.py /home/avantikasanyal/
+avantikasanyal@LAPTOP-CFRE3HMA:~$ cat enc_flag | python3 kms.py
+```
+AND WE HAVE FLAG 
+
+## Terminal Output
+
+```
+avantikasanyal@LAPTOP-CFRE3HMA:~$ cat enc_flag
+a = 88
+b = 26
+cipher is: [97965, 185045, 740180, 946995, 1012305, 21770, 827260, 751065, 718410, 457170, 0, 903455, 228585, 54425, 740180, 0, 239470, 936110, 10885, 674870, 261240, 293895, 65310, 65310, 185045, 65310, 283010, 555135, 348320, 533365, 283010, 76195, 130620, 185045]
+avantikasanyal@LAPTOP-CFRE3HMA:~$ cat enc_flag | python3 kms.py
+python3: can't open file '/home/avantikasanyal/kms.py': [Errno 2] No such file or directory
+avantikasanyal@LAPTOP-CFRE3HMA:~$ mv /mnt/c/Users/avant/Downloads/kms.py /home/avantikasanyal/
+avantikasanyal@LAPTOP-CFRE3HMA:~$ cat enc_flag | python3 kms.py
+Decoded message: picoCTF{custom_d2cr0pt6d_019c831c}
+```
 
 
 ## What I learnt?
