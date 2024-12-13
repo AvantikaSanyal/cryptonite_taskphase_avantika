@@ -91,6 +91,57 @@ So the Glitch is pookie, he did brute force attack us, but just to update our sy
 ![image](https://github.com/user-attachments/assets/949e4de0-7f6b-4e09-8c67-222eae688b7b)
 
 
+# Day 3
+![image](https://github.com/user-attachments/assets/132fca86-0056-43d0-a0ef-ee0bc05eccba)       
+
+A file called *shell.php* has been accessed with the parameters c and d.            
+And then they are trying to execute some commands.
+
+Example for log analysis :       
+
+![image](https://github.com/user-attachments/assets/0e2b3798-d173-401c-9624-ec0d2ce8702a)   
+
+--------------------------------------------------------------------------------------------------
+
+### File Upload Vunerabilitis
+1. RCE - uses HTML, takes an upload, runs a code, then attacker takes control
+2. XXE - Uses cookies to imitate you
+
+---------------------------------------------------------------------------------------------------
+
+Reverse shell - starts connection on target
+Web shell - just runs on web server
+
+-----------------------------------------------------------------------------------------------------
+
+![image](https://github.com/user-attachments/assets/c3b39d0e-b61b-4180-89a5-292c1ae8f2ac)      
+
+When filtering with this ip, we realise that this ip address was not doing anything malicious              
+
+So, try with the other ip.            
+
+![image](https://github.com/user-attachments/assets/42a98874-6152-407a-a820-ca79ec1881c3)           
+
+Now this dude was trying to run commands - NOT COOL    
+
+
+
+![image](https://github.com/user-attachments/assets/9b3fcb54-3bdd-4834-98ba-cded911a56c5)     
+
+10.10.193.232 frostypines.tm    (added this to be able to visit the website)
+
+![image](https://github.com/user-attachments/assets/a2fba828-61c0-4546-89d2-be562dbef7a0)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
