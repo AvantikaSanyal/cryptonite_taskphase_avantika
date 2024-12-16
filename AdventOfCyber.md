@@ -130,7 +130,60 @@ Now this dude was trying to run commands - NOT COOL
 
 10.10.193.232 frostypines.tm    (added this to be able to visit the website)
 
-![image](https://github.com/user-attachments/assets/a2fba828-61c0-4546-89d2-be562dbef7a0)
+![image](https://github.com/user-attachments/assets/a2fba828-61c0-4546-89d2-be562dbef7a0)     
+
+
+# Day 4
+
+1. As usual I started by connecting to the machine.
+2. I use this command to see what parameters are available
+   ```
+   Get-Help Invoke-Atomictest
+   ```
+   ![image](https://github.com/user-attachments/assets/25d5be34-3068-4aae-97f9-028aa7003972)
+3. From the above obtained information we run our first command
+   ```
+   Invoke-AtomicTest T1566.001 -ShowDetails
+   ```
+
+4. This command displays the details of all tests included in the T1566.001 Atomic.
+5. We want to run the first test of T1566.001, but before that we must ensure that  all required resources are present.
+6. ```
+   Invoke-AtomicTest T1566.001 -TestNumbers 1 -CheckPrereq
+   ```
+7. ![image](https://github.com/user-attachments/assets/406a869d-44dd-4e0d-a85e-7113b672948b)
+   This shows how it looks like when all the required pre requisites are present and when some are missing.
+8. After that I run the test
+   ```
+   Invoke-AtomicTest T1566.001 -TestNumbers 1
+   ```
+  ![image](https://github.com/user-attachments/assets/b2b31781-dc7c-4453-b453-74ab31432699)                     
+9. We want log entires for the emulated attack, so we need to first clean up files from the previous test
+   ```
+Invoke-AtomicTest T1566.001 -TestNumbers 1 -cleanup
+```
+10. Then we clear the Sysmon Event Log.
+    ![image](https://github.com/user-attachments/assets/3eeebb20-3f6a-4178-b645-b3f0cbf5874c)
+11. Ran the emulation again
+    ```
+    Invoke-AtomicTest T1566.001 -TestNumbers 1
+    ```
+12. In the Operational Log under Event Viewer there should be new events related to the emulated attack
+    ![image](https://github.com/user-attachments/assets/eb6f6f54-f1d9-4f76-b643-0755c4b02582)
+    (machine died, had to use given ss, sorry)
+13. The above details tell us to Navigate to the directory C:\Users\Administrator\AppData\Local\Temp\, and open the file PhishingAttachment.txt
+14. Then we cleanup again
+    ```
+    Invoke-AtomicTest T1566.001-1 -cleanup.
+    ```
+    ![image](https://github.com/user-attachments/assets/f7f35e19-c9f2-45d6-b882-b4acf1bb4d72)
+
+
+
+
+
+
+ 
 
 
 
