@@ -179,6 +179,66 @@ Invoke-AtomicTest T1566.001 -TestNumbers 1 -cleanup
     ![image](https://github.com/user-attachments/assets/f7f35e19-c9f2-45d6-b882-b4acf1bb4d72)
 
 
+# Day 5
+
+1. BURP suite is used to intercept requests being made on the website that we want to inspect.
+2. We go to this URL on burp site : http://10.10.102.50/product.php.
+3. Then we add the Christmas Cap on to the Cart and forward those requests in Burp
+4. We proceed to checkout, add our details like name and address
+5. We see that once we place our order it says that our's is *wish 21*
+6. When we click on Wish 21 it shows that the wishes are only visible to elves
+7.  Now, when you visit the URL, http://10.10.102.50/product.php, and click Add to Wishlist, an AJAX call is made to wishlist.php with the following XML as input. 
+```
+<wishlist>
+  <user_id>1</user_id>
+     <item>
+       <product_id>1</product_id>
+     </item>
+</wishlist>
+```
+8. When we review the Add to wishlist request on the burpsuite we can see the request containing the XML part
+9. We are updating the XML to:
+```
+<!DOCTYPE foo [<!ENTITY payload SYSTEM "/etc/hosts"> ]>
+<wishlist>
+  <user_id>1</user_id>
+     <item>
+       <product_id>&payload;</product_id>
+     </item>
+</wishlist>
+```
+*When we send this updated XML payload, the first two lines introduce an external entity called payload. The line <!ENTITY payload SYSTEM "/etc/hosts"> tells the XML parser to replace the &payload; reference with the contents of the file /etc/hosts on the server. When the XML is processed, instead of a normal product_id, the application will try to load and include the contents of the file specified in the entity*
+This show that the payload *is* vulnerable indeed
+10. We use the *repeater* option to send multiple post request to exploit vulnerability
+11. We update the XML in repeater too
+12. On hitting send, the server processed the malicious XML which included an external entity refernce and read the file contents
+13. The wishlist.php responded to us by reading the file contents
+14. The wishes part was only accessible to admins so we use :
+```
+<!--?xml version="1.0" ?-->
+<!DOCTYPE foo [<!ENTITY payload SYSTEM "/var/www/html/wishes/wish_1.txt"> ]>
+<wishlist>
+	<user_id>1</user_id>
+	<item>
+	       <product_id>&payload;</product_id>
+	</item>
+</wishlist>
+```
+15. Do the same thing for wish 2 and get your flag 
+
+![image](https://github.com/user-attachments/assets/a9df467e-02ca-461d-9974-8ec93a38d55d)        
+
+![image](https://github.com/user-attachments/assets/ac10d261-c800-4a7b-bd65-b1fe64247081)
+
+
+![image](https://github.com/user-attachments/assets/33caab46-71fd-4eca-8f3d-e1f472df91b1)
+
+![image](https://github.com/user-attachments/assets/84e080df-0354-42c8-acaa-aff616d47a81)
+
+
+
+
+
 
 
 
