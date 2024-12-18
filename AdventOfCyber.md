@@ -235,6 +235,9 @@ This show that the payload *is* vulnerable indeed
 
 ![image](https://github.com/user-attachments/assets/84e080df-0354-42c8-acaa-aff616d47a81)
 
+# Day 6
+
+
 
 
 
