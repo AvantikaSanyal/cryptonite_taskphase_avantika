@@ -237,6 +237,70 @@ This show that the payload *is* vulnerable indeed
 
 # Day 6
 
+1. Sandbox - can execute malicious code without worrying about damage to our system
+2. YARA - used to identify malware via code
+3. We are using YARA to see if it can detect the Malware
+4. We cd into tools first
+ ```
+   FLARE-VM 12/18/2024 19:19:34
+PS C:\Users\Administrator > cd C:/
+FLARE-VM 12/18/2024 19:19:41
+PS C:\ > cd .\Tools\
+FLARE-VM 12/18/2024 19:19:46
+PS C:\Tools > ls
+
+Directory: C:\Tools
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        10/8/2024   9:14 AM                Explorer Suite
+d-----        10/8/2024   9:15 AM                FLOSS
+d-----       10/28/2024  10:48 PM                Malware
+d-----       10/11/2024   2:38 PM                MinGW
+d-----        10/8/2024   9:17 AM                pestudio
+d-----        10/8/2024   9:17 AM                Regshot-x64-Unicode
+d-----        10/8/2024   9:18 AM                Situational Awareness BOF
+d-----        10/8/2024   8:53 AM                SysinternalsSuite
+d-----        10/8/2024   9:19 AM                x64dbg
+d-----        10/9/2024  12:25 PM                YARARULES
+-a----       10/28/2024   9:21 AM           5817 JingleBells.ps1
+-a----       12/18/2024   7:03 PM          47904 malstrings.txt
+-a----       12/18/2024   6:59 PM           1848 YaraMatches.txt
+
+
+FLARE-VM 12/18/2024 19:19:50
+PS C:\Tools >
+```
+5. Then we seewhat is in the Jinglebells file
+   ```
+   Get-Content JingleBells.ps1
+   ```
+6. Acc to the code we get, it says that if Yara detects anything it will put it in the YaraMatches.txt
+7. So to test Yara now we run the powershell - to look for the string constantly
+   ```
+   .\JingleBells.ps1
+   ```
+8. Running malware                                  
+   ![image](https://github.com/user-attachments/assets/584dc831-7c43-48b1-9f5c-d1e537b3bf6d)
+9. The malicious script is MerryChristmas.exe
+    ![image](https://github.com/user-attachments/assets/a14763ca-421b-499a-9004-a1396bc9b85e)
+10. So we saw that Yara detects for malware by checking for a very specific string
+11. Evasion Technique -  to stump Yara, what we do is we use Base64 encoding to convert the identification string so Yara cannot detect it (obsufication)
+12. So when we run MerryChristmasObf.exe (contains obfuscated string), Yara doesn't detect the malicious code
+13. Floss - optimised for malware analysis, looks for obfuscated techmiques, extracts that and places it in a file for analysis
+    ```
+    C:\Tools\Malware\MerryChristmas.exe |Out-file C:\tools\malstrings.txt
+    ```
+    
+![image](https://github.com/user-attachments/assets/d42bbc5c-d176-48b9-ab49-2d0485b0b03d)
+
+15. YARA rules can also check Sysmon logs
+    ![image](https://github.com/user-attachments/assets/a4649f02-699e-496a-a736-4073d837a402)
+16. Here are the multiple sysmon logs we can find (this is a specific process that was created, using it's process id)
+    ![image](https://github.com/user-attachments/assets/d4e8afd0-4135-4f9f-ae5b-cbd51ec21b17)
+17. This is our specific event
+    ![image](https://github.com/user-attachments/assets/1ca1c84d-39b0-4957-879a-10155eac77a6)
+
 
 
 
