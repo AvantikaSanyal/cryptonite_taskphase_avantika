@@ -184,3 +184,71 @@ did not get the length subtraction flipping part
 
 ## What did I learn?
 Revision of RSA decryption
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# U are T detective
+
+flag : nite{n0n_std_b4ud_r4t3s_ftw}
+
+## Challenge
+
+*Description :* One of our Detective tapped a channel to intercept this signal but couldn't read it, HELP HIM
+
+# Approach 
+1. We use a logic Analyser and view our signla.sr file with that                            
+   ![image](https://github.com/user-attachments/assets/a81188ca-294e-433a-98c9-a0c1810b9358)
+    
+2. Notice the spike in D1 signal, zooming in
+   ![image](https://github.com/user-attachments/assets/5ca81f1e-791d-4a6b-a8dd-7a4d2b5a69b8)
+       
+3. We need to find Baud Rate.
+
+            Baud rate refers to the number of signal changes (symbols) transmitted per second.
+            Measured in bauds, where 1 baud = 1 signal change per second.
+            Relation to Bit Rate:
+
+           - If each signal change represents exactly one bit of data, then the baud rate equals the bit rate.
+           - If a more complex encoding scheme is used (e.g., 4-level signaling or QAM), each signal change can represent multiple bits. In this case:
+
+                                                        Bit Rate = Baud Rate × Bits per Symbol
+
+4. What is UART?
+   
+        UART (Universal Asynchronous Receiver-Transmitter) is a hardware communication protocol used for asynchronous serial data exchange between two devices. It is one of the simplest and most widely used 
+        protocols in embedded systems for short-distance, low-speed, and low-cost communication.
+
+5. Baud rate = 1/(time of the smallest bit)
+   
+6.  A UART "frame" starts with a start bit (low signal), sends data bits, and ends with a stop bit (high signal).
+The decoder in PulseView breaks this down and tells you what data is being transmitted.
+
+7. The start bit is low and it ends with a high. There are 8 bits in between (5F in hexadecimal)
+
+8. The signal timing information is displayed at the top as 5.333333 MHz / 187.500 ns.
+    -  Sampling frequency: 5.333333 MHz
+    - Sample period: 187.5 ns per sample (1 / 5.333333 MHz).
+
+The bit duration can be calculated as:       
+
+           ![image](https://github.com/user-attachments/assets/94f2d539-4574-451a-9b7f-8cbe99e2f967)
+
+So, the actual baud rate is 5,405,405 bps,
+
+9. So we use this for signal analysis with Protocol Detector with UART to get hex data
+10. Convert hex data with CyberChef to get flag
+
+
+## Errors
+I wasn't able to read the signals first, honestly had no clue how hardware works,
+
+## Resources
+Pulse View
+ChatGPT
+
+## What did I learn?
+1. captured and analysed signals with a logic analyser, this helps in visualisation of wave forms
+2. use of communication protocols (UART) , it decodes the protocol and shows the actual data being transmitted
+3.  understanding the waveforms
+4.  Baud rate is the number of signal changes (symbols) per second in a communication system,  higher baud rates allow data to be transmitted more quickly, but they also require more precise timing. If the baud 
+    rate is too high for the hardware or the system’s stability, data corruption can occur.
+    if the baud rate between devices doesn't match, the data received may be incorrect or garbled, causing communication errors.
