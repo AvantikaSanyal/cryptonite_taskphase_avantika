@@ -182,8 +182,9 @@ did not get the length subtraction flipping part
 1. ChatGPT
 2. Online RSA decryption tool
 
-## What did I learn?
-Revision of RSA decryption
+## What did I learn  
+
+revision of rsa encryption
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # U are T detective
@@ -242,7 +243,7 @@ So, the actual baud rate is 5,405,405 bps,
 I wasn't able to read the signals first, honestly had no clue how hardware works,
 
 ## Resources
-Pulse View
+Pulse View                                    
 ChatGPT
 
 ## What did I learn?
