@@ -303,6 +303,119 @@ PS C:\Tools >
 ![image](https://github.com/user-attachments/assets/05bf0310-d43a-48df-bf3f-c1f40fe905cd)
 
 
+# Day 7
+
+1. Cloud watch : good for any type of investigation
+   - log events (records of individual application events and their time stamps)
+   - log streams (collection of events from a source)
+   - log groups (organisational collections of log streams)
+     
+2. Cloud Train : monitoring actions by users by JSON events
+   - event history
+   - trails 
+
+3. JQ : parses JSON data for better understanding
+
+4. We create a json file and using nano editor add some data into it
+   ![image](https://github.com/user-attachments/assets/0fbbf7dc-76c9-4ba8-892b-bbb81cb73fce)
+
+5. Then we use jq for the json file that we just made
+   ```
+   ubuntu@tryhackme:~$ jq '.[]' bookstore.json
+   ```
+   ![image](https://github.com/user-attachments/assets/5b154476-eadc-42d9-b748-6841881604b3)
+
+6. jq is a powerful tool to filter data, an example of this would be (for book titles)
+  ```
+  ubuntu@tryhackme:~$ jq '.[] | .book_title' bookstore.json
+  ```
+ ![image](https://github.com/user-attachments/assets/8f730ec0-782f-48ed-8789-9fcb66ee5050)                
+
+ 7. Now we will use jq to solve our mystery
+    ```
+    jq -r '.Records[] | select(.eventSource == "s3.amazonaws.com" and .requestParameters.bucketName=="wareville-care4wares")' cloudtrail_log.json
+    ```
+    ![image](https://github.com/user-attachments/assets/f6b6c7b1-bf01-41bb-9a0b-e6e5691ebc10)
+    we got some information about the user
+    The user is listing objects in S3 bucket and also putting some objects in the S3 bucket
+
+ 8. now we want to filter further based on some requisites
+    ```
+    jq -r '.Records[] | select(.eventSource == "s3.amazonaws.com" and .requestParameters.bucketName=="wareville-care4wares") | [.eventTime, .eventName, .userIdentity.userName // "N/A",.requestParameters.bucketName // "N/A", .requestParameters.key // "N/A", .sourceIPAddress // "N/A"]' cloudtrail_log.json
+    ```
+
+ 9. wait, we can get this in column form for easy understanding
+    ```
+    jq -r '["Event_Time", "Event_Name", "User_Name", "Bucket_Name", "Key", "Source_IP"],(.Records[] | select(.eventSource == "s3.amazonaws.com" and .requestParameters.bucketName=="wareville-care4wares") | [.eventTime, .eventName, .userIdentity.userName // "N/A",.requestParameters.bucketName // "N/A", .requestParameters.key // "N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t
+    ```
+    ![image](https://github.com/user-attachments/assets/78fe5c5f-6b0e-4436-9241-dfcb4da7398f)
+
+10. since we see a lot of 'glitch', let's filter for glitch
+    ```
+    jq -r '["Event_Time", "Event_Source", "Event_Name", "User_Name", "Source_IP"],(.Records[] | select(.userIdentity.userName == "glitch") | [.eventTime, .eventSource, .eventName, .userIdentity.userName // "N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t -s $'\t'
+    ```
+    ![image](https://github.com/user-attachments/assets/b52f8f53-c9d3-4268-8d70-dd2e99a2cb8a)
+    he is doing a lot of things that aren't needed. what is he doing and why?
+
+11. What type of machine is the Glitch using?
+    ```
+    jq -r '["Event_Time", "Event_type", "Event_Name", "User_Name", "Source_IP", "User_Agent"],(.Records[] | select(.userIdentity.userName == "glitch") | [.eventTime,.eventType, .eventName, .userIdentity.userName //"N/A",.sourceIPAddress //"N/A", .userAgent //"N/A"]) | @tsv' cloudtrail_log.json | column -t -s $'\t'
+    ```
+    ![image](https://github.com/user-attachments/assets/43711976-0462-465a-a795-1e84ca1f6707)
+
+    Glitch is using Firefox browser on a Mac!!!!
+
+13.  we are filtering by event source "iam.amazonaws.com"
+ ```
+       jq -r '["Event_Time", "Event_Source", "Event_Name", "User_Name", "Source_IP"], (.Records[] | select(.eventSource == "iam.amazonaws.com") | [.eventTime, .eventSource, .eventName, .userIdentity.userName //  
+        N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t -s $'\t'
+```
+This is to understand who created the Glitch account? Because he shouldn't have access to all these files
+![image](https://github.com/user-attachments/assets/0e7aaa8f-003c-4042-a90e-c683b46b3588)        
+Notice how at the last line we see that the user acc has been created by this IP address.
+
+14. Now we filter for the *create user* part
+    ```
+    jq '.Records[] |select(.eventSource=="iam.amazonaws.com" and .eventName== "CreateUser")' cloudtrail_log.json
+    ```
+    ![image](https://github.com/user-attachments/assets/bfbe102a-48ac-4227-bba4-36983813e58e)
+    Seems like mcskidy itself is creating the glitch account.
+
+15. But, did McSkidy get compromised? What harm did Glitch do?
+
+16. Notice *AttachUserPolicy* - gives user greater privilegs in AWS
+    
+17. Let's filter on that
+    ```
+    jq '.Records[] | select(.eventSource=="iam.amazonaws.com" and .eventName== "AttachUserPolicy")' cloudtrail_log.json
+    ```
+    ![image](https://github.com/user-attachments/assets/9ef74114-d8eb-47d9-b880-1569e8158456)
+    Somebody compromised McSkidy and gave admin access to the Glitch
+
+18. Filtering by the repeating source IP address
+    ```
+    q -r '["Event_Time", "Event_Source", "Event_Name", "User_Name", "Source_IP"], (.Records[] | select(.sourceIPAddress=="53.94.201.69") | [.eventTime, .eventSource, .eventName, .userIdentity.userName // "N/A", .sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t -s $'\t'
+    ```
+    ![image](https://github.com/user-attachments/assets/55b18c27-beca-4b6c-bef8-55da38312d6c)
+    Mayor Malware from his source IP , used McSkidy's account to blame the Glitch
+
+19. ````
+    jq -r '["Event_Time","Event_Source","Event_Name", "User_Name","User_Agent","Source_IP"],(.Records[] | select(.userIdentity.userName=="PLACEHOLDER") | [.eventTime, .eventSource, .eventName, .userIdentity.userName // "N/A",.userAgent // "N/A",.sourceIPAddress // "N/A"]) | @tsv' cloudtrail_log.json | column -t -s $'\t'
+    ````
+    ![image](https://github.com/user-attachments/assets/924aab5f-f9fd-4146-b5cc-f69f41568004)
+    differnece in IP shows that Mayor Malware was using McSkidy's acc to frame Glitch
+
+    ![image](https://github.com/user-attachments/assets/43a91ebc-2491-4bbe-8403-359901413db3)
+
+
+
+
+
+
+
+
+
+
 
 
 
