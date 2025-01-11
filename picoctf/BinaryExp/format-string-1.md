@@ -52,7 +52,7 @@ int main() {
   return 0;
 }
 ```
-we see a string vulnerability, they are not accepting string using %s.              
+we see a string vulnerability, they are not printing string using %s.              
 Similar to a previous chall, so I simply gave an input of %p, multiple times, thru hit and trial method. The hint said 32 bytes or 64 bytes, so I entered 32 %p's, I don't know if that was relevant but okay.    
 And I got :     
 ```
