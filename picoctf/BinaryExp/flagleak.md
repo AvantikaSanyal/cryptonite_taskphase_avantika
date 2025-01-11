@@ -57,7 +57,7 @@ I absolutely despise unnecessarily having to read long codes, so lemme just zoom
 
 ![image](https://github.com/user-attachments/assets/91ac11b4-18b6-4037-adb6-f2f05bb3aaa5)          
 
-A big hint is that the function is called "vuln". It also calls to readflag, so well, it reads the flag. Then it accepts an entry from the user, without a format specifier (VULNERABILITY!!!!!)
+A big hint is that the function is called "vuln". It also calls to readflag, so well, it reads the flag. Then it accepts an entry from the user, and prints it without a format specifier (VULNERABILITY!!!!!)
 
 So, I used :
 ```
