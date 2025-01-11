@@ -103,7 +103,7 @@ def dynamic_xor_encrypt(plaintext, text_key):
         cipher_text += encrypted_char
     return cipher_text
 ```
-This part uses a classic XOR operation. XOR is a bitwise operation that combines two numbers in a special way (don’t worry too much about how it works; the important part is it "scrambles" the character).
+This part uses a classic XOR operation. XOR is a bitwise operation that combines two numbers in a special way 
 
 ```
 def test(plain_text, text_key):
