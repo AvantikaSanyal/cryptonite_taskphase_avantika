@@ -228,6 +228,8 @@ The decoder in PulseView breaks this down and tells you what data is being trans
 8. The signal timing information is displayed at the top as 5.333333 MHz / 187.500 ns.
     -  Sampling frequency: 5.333333 MHz
     - Sample period: 187.5 ns per sample (1 / 5.333333 MHz).
+      
+![image](https://github.com/user-attachments/assets/c24dd68c-6ba8-4d85-b27f-08ab995317c6)
 
 So, the actual baud rate is 5,405,405 bps,
 
