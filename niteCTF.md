@@ -229,10 +229,6 @@ The decoder in PulseView breaks this down and tells you what data is being trans
     -  Sampling frequency: 5.333333 MHz
     - Sample period: 187.5 ns per sample (1 / 5.333333 MHz).
 
-The bit duration can be calculated as:       
-
-           ![image](https://github.com/user-attachments/assets/94f2d539-4574-451a-9b7f-8cbe99e2f967)
-
 So, the actual baud rate is 5,405,405 bps,
 
 9. So we use this for signal analysis with Protocol Detector with UART to get hex data
